@@ -1,0 +1,7 @@
+div {
+  float:left;
+  width: 05%;
+  padding-bottom: 05%; /* = width for a 1:1 aspect ratio */
+  margin:0%;
+  background-color: red; /*commenting will hide all colorless squares*/
+}
