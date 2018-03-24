@@ -5,3 +5,5 @@ div {
   margin:0%;
   background-color: red; /*commenting will hide all colorless squares*/
 }
+
+/* https://stackoverflow.com/questions/20456694/grid-of-responsive-squares */
