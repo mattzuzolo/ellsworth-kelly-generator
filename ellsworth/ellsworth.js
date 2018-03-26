@@ -1,53 +1,27 @@
-function fillColorTheme (x) {
 
-  var colorTheme = [];
-
-  for (var i = 0; i < 144; i++) {
-    colorTheme[i] = x;
-  }
-
-  return colorTheme;
-}
-
-
-
-
+//Used to select theme that will display
 function changeTheme () {
 
-
+  //The ellsworth theme displays by default at document.ready
   $(document).ready(function() {
-    return addElement(randomEllsworthColor());
+    addElementEllsworth();
   });
 
   $("#ellsworth-button").click(function(i) {
-      //Hide the existing visuals so that only one iteration displays at a single time.
-      $(".art").hide();
-      //alert("random theme button was clicked");
-
-      //colorTheme = fillColorTheme(randomEllsworthColor());
-
+      //Remove the existing visuals so that only one iteration displays at a single time.
+      $(".art").remove();
+      addElementEllsworth();
   });
 
   $("#random-button").click(function(i) {
-      $(".art").hide();
-      //alert("random theme button was clicked");
-
-      //colorTheme = fillColorTheme(randomColor());
+      $(".art").remove();
+      addElementRandom();
   });
 
   $("#tech-button").click(function(i) {
-      $(".art").hide();
-      //alert("random theme button was clicked");
-
-    //  colorTheme = fillColorTheme(randomTechColor());
-
+      $(".art").remove();
+      addElementTech();
   });
-
-
-
-
-
-  //addElement( colorTheme );
 
 
 }
@@ -59,11 +33,11 @@ changeTheme();
 
 
 
-function addElement () {
+function addElementEllsworth () {
 
   //For loop will dynamically create specified number of empty divs (CSS will make them into squares)
+  //WHY IS IT NOT COUNTING PROPERLY? DOUBLE THE SQUARES WHEN I++;
   for (var i = 0; i < 144; i++) {
-
 
     //Actually creating divs here
     var newDiv = document.createElement("div");
@@ -74,36 +48,95 @@ function addElement () {
         $("div").addClass("art");
     });
 
+    //Putting them into the body of the file
+    document.body.insertBefore(newDiv, currentDiv);
+
+    //Giving each individual div a unique class. Then assigning a random color (RGB value) to that class using function.
+    $("div").each(function(i) {
+        $(this).addClass("square" + i);
+        //$(this).css('backgroundColor', randomColor()); //this one gives any random color (RGB)
+        $(this).css('backgroundColor', randomEllsworthColor());
+        //$(this).css('backgroundColor', randomTechColor());
+    });
+
+    //console.log("number: " + i);
+
+    // //Putting them into the body of the file
+    // document.body.insertBefore(newDiv, currentDiv);
+
+  }
+
+} //Closes function addElementEllsworth
+
+function addElementRandom () {
+
+  //For loop will dynamically create specified number of empty divs (CSS will make them into squares)
+  for (var i = 0; i < 144; i++) {
+
+    //Actually creating divs here
+    var newDiv = document.createElement("div");
+    var currentDiv = document.getElementById("div1");
+
+    //Giving all the created divs for ability to change CSS of entire grid
+    $(function() {
+        $("div").addClass("art");
+    });
+
+    //Putting them into the body of the file
+    document.body.insertBefore(newDiv, currentDiv);
+
+    //Giving each individual div a unique class. Then assigning a random color (RGB value) to that class using function.
+    $("div").each(function(i) {
+        $(this).addClass("square" + i);
+        $(this).css('backgroundColor', randomColor()); //this one gives any random color (RGB)
+        //$(this).css('backgroundColor', randomEllsworthColor());
+        //$(this).css('backgroundColor', randomTechColor());
+    });
+
+    //Putting them into the body of the file
+    // document.body.insertBefore(newDiv, currentDiv);
+  }
+} //Closes function addElementRandom
+
+function addElementTech () {
+
+  //For loop will dynamically create specified number of empty divs (CSS will make them into squares)
+  for (var i = 0; i < 144; i++) {
+
+    //Actually creating divs here
+    var newDiv = document.createElement("div");
+    var currentDiv = document.getElementById("div1");
+
+    //Giving all the created divs for ability to change CSS of entire grid
+    $(function() {
+        $("div").addClass("art");
+    });
+
+    //Putting them into the body of the file
+    document.body.insertBefore(newDiv, currentDiv);
+
     //Giving each individual div a unique class. Then assigning a random color (RGB value) to that class using function.
     $("div").each(function(i) {
         $(this).addClass("square" + i);
         //$(this).css('backgroundColor', randomColor()); //this one gives any random color (RGB)
         //$(this).css('backgroundColor', randomEllsworthColor());
-        //$(this).css('backgroundColor', randomTechColor());
-
-        //var colorTheme = randomEllsworthColor()
-        $(this).css('backgroundColor', randomEllsworthColor());
+        $(this).css('backgroundColor', randomTechColor());
     });
 
-    console.log("number: " + i);
-
-
     //Putting them into the body of the file
-    document.body.insertBefore(newDiv, currentDiv);
-
+    //document.body.insertBefore(newDiv, currentDiv);
   }
+} //Closes function addElementTech
 
-} //Closes function addElement
 
-//Caling function so that it appears in HTML
-
-addElement();
+//addElement no longer needs to be called in current program
+//addElement();
 
 
 //returns a random integer between 0 and <number passed into function as a parameter>.
-function generateRandom (x) {
+function generateRandom (num) {
 
-    return Math.floor(Math.random() * Math.floor(x));
+    return Math.floor(Math.random() * Math.floor(num));
 }
 
 
@@ -128,6 +161,7 @@ function randomEllsworthColor () {
     //Color hexes taken from the Ellsworth Kelly painting at the SFMOMA
     ellsworthColors = ["#2f2d2d","#c6becd","#ff8635","#3b354c","#94d35a","#f7f25e","#0170c1","#243881","#703550","#b38cb9","#7bc653","#do2624","#f2a00f","#f3e44e"];
 
+    //Function returns a value from the above array. Index is randomly selected by generating a random index from the array.
     return ellsworthColors[generateRandom(ellsworthColors.length)];
 }
 
@@ -139,8 +173,8 @@ function randomTechColor () {
     var facebook = ["#3B5998","#758fb6","#3B5998","#9297a2"];
     var twitter = ["#1DA1F2","#1DA1F2","#AAB8C2","#E1E8ED"];
     var google = ["#4285f4","#ea4336","#fbbc04","#34a853"];
-    microsoft = ["#ffffff","#ffffff","#ffffff","#ffffff"];
-    //var microsoft = ["#f45326","#80bc0c","#08a6f0","#ffba11"];
+    var microsoft = ["#f45326","#80bc0c","#08a6f0","#ffba11"];
+
 
     var techColors = [airbnb,facebook,twitter,google,microsoft];
 
@@ -150,27 +184,10 @@ function randomTechColor () {
 
 function pageInteractions () {
 
-
   //Changes the color of the link to one of the ellsworth colors
   $(".link-normal").hover(function(i){
       $(this).css('color', randomEllsworthColor());
   });
 
-  //changes theme when you click the buttons
-  // $("button").click(function(){
-  //     $(this).css('color', randomEllsworthColor());
-  //     $(this).css('backgroundColor', randomEllsworthColor());
-  //
-  // });
-
-
-  // $("#random-button").click(function(i) {
-  //
-  //
-  // });
-
-
-
-
-
 }
+pageInteractions();

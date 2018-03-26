@@ -4,9 +4,11 @@
   width: 08.33333333%;
   padding-bottom: 08.333333%; /* = width for a 1:1 aspect ratio */
   margin:0%;
-  background-color: gray; /* commenting will hide all colorless square */
+  background-color: white; /* commenting will hide all colorless square */
 
 }
+
+/* https://stackoverflow.com/questions/20456694/grid-of-responsive-squares */
 
 button:hover {
   color: white !important;
@@ -18,18 +20,24 @@ body {
 
 }
 h1 {
-  font-family: "HelveticaNeue-bold";
+    font-family: "HelveticaNeue-bold";
 }
 
 h3 {
-  font-family: "HelveticaNeue";
+    font-family: "HelveticaNeue";
 
 
 }
 
 h5 {
     font-family: "HelveticaNeue";
-    padding-bottom: 10px;
+
+}
+
+h6 {
+    font-family: "HelveticaNeue";
+    font-size:18px;
+    padding-bottom: 15px;
 
 }
 
@@ -44,23 +52,7 @@ button {
   border-color: white !important;
 }
 
-/* https://stackoverflow.com/questions/20456694/grid-of-responsive-squares */
-
-
 .link-normal {
   color:black;
   text-decoration:underline;
 }
-
-
-
-
-/*before I created squares with .art. Saving as a precaution. */
-
-/* div {
-  float:left;
-  width: 08.33333333%;
-  padding-bottom: 08.333333%; /* = width for a 1:1 aspect ratio */
-  /* margin:0%;
-  background-color: gray; /* commenting will hide all colorless square
-} */
