@@ -1,4 +1,3 @@
-
 //Used to select theme that will display
 function changeTheme () {
 
@@ -16,21 +15,39 @@ function changeTheme () {
   $("#random-button").click(function(i) {
       $(".art").remove();
       addElementRandom();
+      //newTheme( randomColor() );
   });
 
   $("#tech-button").click(function(i) {
       $(".art").remove();
       addElementTech();
+      //newTheme(randomTechColor());
   });
-
-
 }
 changeTheme();
 
 
 
-
-
+//create new function that changes color. The parameter will determine color scheme so only one function is needed
+// function newTheme (theme) {
+//
+//   //For loop will dynamically create specified number of empty divs (CSS will make them into squares)
+//   //WHY IS IT NOT COUNTING PROPERLY? DOUBLE THE SQUARES WHEN I++;
+//   for (var i = 0; i < 144; i++) {
+//
+//     //Actually creating divs here and putting them into the body of the file
+//     $('body').append("<div class='art'></div>");
+//
+//     //Giving each individual div a unique class. Then assigning a random color (RGB value) to that class using function.
+//     $("div").each(function(i) {
+//         $(this).addClass("square" + i);
+//         $(this).css('backgroundColor', theme);
+//     });
+//   }//closes for loop
+//
+//
+//
+// }
 
 
 function addElementEllsworth () {
@@ -39,62 +56,32 @@ function addElementEllsworth () {
   //WHY IS IT NOT COUNTING PROPERLY? DOUBLE THE SQUARES WHEN I++;
   for (var i = 0; i < 144; i++) {
 
-    //Actually creating divs here
-    var newDiv = document.createElement("div");
-    var currentDiv = document.getElementById("div1");
-
-    //Giving all the created divs for ability to change CSS of entire grid
-    $(function() {
-        $("div").addClass("art");
-    });
-
-    //Putting them into the body of the file
-    document.body.insertBefore(newDiv, currentDiv);
+    //Actually creating divs here and putting them into the body of the file
+    $('body').append("<div class='art'></div>");
 
     //Giving each individual div a unique class. Then assigning a random color (RGB value) to that class using function.
     $("div").each(function(i) {
         $(this).addClass("square" + i);
-        //$(this).css('backgroundColor', randomColor()); //this one gives any random color (RGB)
         $(this).css('backgroundColor', randomEllsworthColor());
-        //$(this).css('backgroundColor', randomTechColor());
     });
-
-    //console.log("number: " + i);
-
-    // //Putting them into the body of the file
-    // document.body.insertBefore(newDiv, currentDiv);
-
-  }
-
+  }//closes for loop
 } //Closes function addElementEllsworth
+
 
 function addElementRandom () {
 
   //For loop will dynamically create specified number of empty divs (CSS will make them into squares)
   for (var i = 0; i < 144; i++) {
 
-    //Actually creating divs here
-    var newDiv = document.createElement("div");
-    var currentDiv = document.getElementById("div1");
+    //Actually creating divs here and putting them into the body of the file
+    $('body').append("<div class='art'></div>");
 
-    //Giving all the created divs for ability to change CSS of entire grid
-    $(function() {
-        $("div").addClass("art");
-    });
-
-    //Putting them into the body of the file
-    document.body.insertBefore(newDiv, currentDiv);
 
     //Giving each individual div a unique class. Then assigning a random color (RGB value) to that class using function.
     $("div").each(function(i) {
         $(this).addClass("square" + i);
         $(this).css('backgroundColor', randomColor()); //this one gives any random color (RGB)
-        //$(this).css('backgroundColor', randomEllsworthColor());
-        //$(this).css('backgroundColor', randomTechColor());
     });
-
-    //Putting them into the body of the file
-    // document.body.insertBefore(newDiv, currentDiv);
   }
 } //Closes function addElementRandom
 
@@ -103,39 +90,21 @@ function addElementTech () {
   //For loop will dynamically create specified number of empty divs (CSS will make them into squares)
   for (var i = 0; i < 144; i++) {
 
-    //Actually creating divs here
-    var newDiv = document.createElement("div");
-    var currentDiv = document.getElementById("div1");
+    //Actually creating divs here and putting them into the body of the file
+    $('body').append("<div class='art'></div>");
 
-    //Giving all the created divs for ability to change CSS of entire grid
-    $(function() {
-        $("div").addClass("art");
-    });
-
-    //Putting them into the body of the file
-    document.body.insertBefore(newDiv, currentDiv);
 
     //Giving each individual div a unique class. Then assigning a random color (RGB value) to that class using function.
     $("div").each(function(i) {
         $(this).addClass("square" + i);
-        //$(this).css('backgroundColor', randomColor()); //this one gives any random color (RGB)
-        //$(this).css('backgroundColor', randomEllsworthColor());
         $(this).css('backgroundColor', randomTechColor());
     });
-
-    //Putting them into the body of the file
-    //document.body.insertBefore(newDiv, currentDiv);
-  }
+  } //for loop
 } //Closes function addElementTech
-
-
-//addElement no longer needs to be called in current program
-//addElement();
 
 
 //returns a random integer between 0 and <number passed into function as a parameter>.
 function generateRandom (num) {
-
     return Math.floor(Math.random() * Math.floor(num));
 }
 
